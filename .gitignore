@@ -1,0 +1,12 @@
+.cache/
+auto-save-list/
+backups/
+elpa/
+eshell/
+packages*/
+transient/
+.mc-lists.el
+*.data
+recentf
+smex-items
+*.eld
