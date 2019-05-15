@@ -85,6 +85,7 @@
   (setq which-key-separator " : "))
 
 (use-package exec-path-from-shell :ensure t)
+(use-package eyebrowse :ensure t)
 (use-package helm :ensure t)
 (require 'helm-config)
 (use-package general :ensure t)
@@ -190,7 +191,9 @@
   (push 'company-robe company-backends))
 
 (use-package gruvbox-theme :ensure t)
-(load-theme 'gruvbox)
+(use-package rebecca-theme :ensure t)
+
+(load-theme 'rebecca)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -199,10 +202,10 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" default)))
+    ("f633d825e380caaaefca46483f7243ae9a663f6df66c5fad66d4cab91f731c86" "1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" default)))
  '(package-selected-packages
    (quote
-    (swiper flycheck general smex clojure-mode-extra-font-locking clojure-mode cider which-key markdown-mode yaml-mode rainbow-delimiters paredit treemacs-magit treemacs-icons-dired treemacs-projectile treemacs gruvbox-theme robe use-package js2-refactor helm exec-path-from-shell company-tern))))
+    (embrace rebecca-theme eyebrowse swiper flycheck general smex clojure-mode-extra-font-locking clojure-mode cider which-key markdown-mode yaml-mode rainbow-delimiters paredit treemacs-magit treemacs-icons-dired treemacs-projectile treemacs gruvbox-theme robe use-package js2-refactor helm exec-path-from-shell company-tern))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
