@@ -93,6 +93,7 @@
 (use-package magit :ensure t)
 (use-package multiple-cursors :ensure t)
 (use-package swiper :ensure t)
+(use-package org :ensure t)
 
 (use-package company :ensure t)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -112,8 +113,6 @@
 ;;;; ==[ Helm ]==============
 (helm-autoresize-mode t)
 (setq helm-autoresize-max-height 40)
-
-
 (setq helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match    t)
 
@@ -137,6 +136,8 @@
  "gs"  'magit-status
  "k"   '(:ignore t :which-key "Knife")
  "ks"  'knife-status
+ "o"   '(:ignore t :which-key "org")
+ "oc"  'org-capture
  "p"   'projectile-command-map)
 
 (general-define-key
@@ -169,18 +170,7 @@
   :config
   (add-hook 'prog-mode-hook #'enable-paredit-mode))
 
-(use-package slime-company :ensure t)
-
-(use-package slime
-  :ensure t
-  :config
-  (setq inferior-lisp-program "sbcl"))
-
-(slime-setup '(slime-fancy
-               slime-banner
-	       slime-company
-               slime-indentation))
-
+(use-package sly :ensure t)
 (use-package rainbow-delimiters
   :ensure t
   :config
@@ -208,7 +198,14 @@
 
 (use-package doom-modeline
   :ensure t
-  :hook (after-init . doom-modeline-mode))
+  :hook (after-init . doom-modeline-mode)
+  :config
+  (setq doom-modeline-height 20)
+  (setq doom-modeline-major-mode-color-icon t)
+  (setq doom-modeline-buffer-state-icon t)
+  (setq doom-modeline-buffer-encoding nil)
+  )
+
 
 (load-theme 'rebecca t)
 
@@ -222,7 +219,7 @@
     ("f633d825e380caaaefca46483f7243ae9a663f6df66c5fad66d4cab91f731c86" "1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" default)))
  '(package-selected-packages
    (quote
-    (doom-modeline slime-company slime embrace rebecca-theme eyebrowse swiper flycheck general smex clojure-mode-extra-font-locking clojure-mode cider which-key markdown-mode yaml-mode rainbow-delimiters paredit treemacs-magit treemacs-icons-dired treemacs-projectile treemacs gruvbox-theme robe use-package js2-refactor helm exec-path-from-shell company-tern))))
+    (sly doom-modeline slime-company slime embrace rebecca-theme eyebrowse swiper flycheck general smex clojure-mode-extra-font-locking clojure-mode cider which-key markdown-mode yaml-mode rainbow-delimiters paredit treemacs-magit treemacs-icons-dired treemacs-projectile treemacs gruvbox-theme robe use-package js2-refactor helm exec-path-from-shell company-tern))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
