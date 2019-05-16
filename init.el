@@ -50,8 +50,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
-(add-to-list 'package-pinned-packages '(magit . "melpa-stable") t)
+;(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+;(add-to-list 'package-pinned-packages '(magit . "melpa-stable") t)
 
 (let ((dir "~/.emacs.d/packages"))
   (unless (file-directory-p dir)
@@ -169,6 +169,18 @@
   :config
   (add-hook 'prog-mode-hook #'enable-paredit-mode))
 
+(use-package slime-company :ensure t)
+
+(use-package slime
+  :ensure t
+  :config
+  (setq inferior-lisp-program "sbcl"))
+
+(slime-setup '(slime-fancy
+               slime-banner
+	       slime-company
+               slime-indentation))
+
 (use-package rainbow-delimiters
   :ensure t
   :config
@@ -181,7 +193,6 @@
   (add-hook 'js2-mode-hook #'js2-imenu-extra-mode))
 
 (use-package js2-refactor :ensure t)
-
 (use-package company-tern :ensure t)
 
 (use-package robe
@@ -193,7 +204,13 @@
 (use-package gruvbox-theme :ensure t)
 (use-package rebecca-theme :ensure t)
 
-(load-theme 'rebecca)
+(use-package all-the-icons :ensure t)
+
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
+
+(load-theme 'rebecca t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -205,7 +222,7 @@
     ("f633d825e380caaaefca46483f7243ae9a663f6df66c5fad66d4cab91f731c86" "1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" default)))
  '(package-selected-packages
    (quote
-    (embrace rebecca-theme eyebrowse swiper flycheck general smex clojure-mode-extra-font-locking clojure-mode cider which-key markdown-mode yaml-mode rainbow-delimiters paredit treemacs-magit treemacs-icons-dired treemacs-projectile treemacs gruvbox-theme robe use-package js2-refactor helm exec-path-from-shell company-tern))))
+    (doom-modeline slime-company slime embrace rebecca-theme eyebrowse swiper flycheck general smex clojure-mode-extra-font-locking clojure-mode cider which-key markdown-mode yaml-mode rainbow-delimiters paredit treemacs-magit treemacs-icons-dired treemacs-projectile treemacs gruvbox-theme robe use-package js2-refactor helm exec-path-from-shell company-tern))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
